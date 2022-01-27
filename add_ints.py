@@ -2,12 +2,34 @@
 
 import sys
 
-print ('Number of args: ', len(sys.argv), 'args.')
-print ('The first arg: ', sys.argv[0])
-print ('The second arg: ', sys.argv[1])
-print ('The second arg: ', sys.argv[2])
+# print arr from start
+def print_array(arr, start) :
+    for i in range(start, len(arr)):
+        print(arr[i], end = ' ')
 
-sum = 0
-for i in range(1,len(sys.argv)):
-    sum += int(sys.argv[i])
-print ('The sum of the numbers entered is: ', sum)
+# INPUT: an argv array
+# OUTPUT: an array with each of the given args (not the 0th) reversed
+def reverse_each_arg(arr, start) :
+    result = []  
+    for i in range(start,len(arr)) :
+        result.append(arr[i][::-1])
+    return result
+
+# sum the elements(as integers) of arr starting from start
+def sum_elem(arr, start) :
+    sum = 0
+    for i in range(start,len(arr)):
+        sum += int(arr[i])
+    return sum
+
+
+
+def main() :
+    print ('Sum of the arguments: ', sum_elem(sys.argv, 1))
+    new_array = reverse_each_arg(sys.argv, 1)
+    print ('All the arguments reversed: ')
+    print_array(new_array, 0)
+    return
+
+if __name__ == '__main__' :
+    main()
