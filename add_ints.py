@@ -39,7 +39,22 @@ def pad_smallest(list1, list2) :
             for i in range(diff) :
                 list2.append('0')
 
-    
+   
+# Add two numbers grade school style.
+# assuming the 'numbers' are given as lists of chars where
+# the digits have been reversed and the smaller one has been 
+# padded with zeros
+def add_big_numbers(list1, list2) :
+    result = []
+    temp = 0
+
+    for i in range(len(list1)) :
+        total = (int(list1[i]) + int(list2[i]) + temp) 
+        result.append(total % 10)    
+        temp = total // 10
+    if(temp != 0) :
+        result.append(temp)
+    return result 
 
 
 # main
@@ -49,13 +64,15 @@ def main() :
     print ('All the arguments reversed: ')
     print_array(new_array, 0)
 
-    list2 = ['1', '2']
+    list2 = ['9', '2']
     list1 = ['1', '2', '3', '4', '5', '5', '3']
     print('list1', list1)
     print('list2', list2)
     pad_smallest(list1,list2)
     print('list1 after', list1)
     print('list2 after', list2)
+    final_result = add_big_numbers(list1, list2)
+    print('after addition', final_result)
 
     return
 
