@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-
 import sys
-
 
 # INPUTS: Array, Start index
 def print_array(arr, start=0) :
     for i in range(start, len(arr)):
         print(arr[i], end = ' ')
 
-# INPUT: array of lists
-# RETURNS: number of elemtents of the largest list in the array
+# INPUT: Array of lists
+# RETURNS: size of largest list in the input array
 def find_max_length(arr) :
     max = 0
     for i in range(len(arr)) :
@@ -18,18 +16,16 @@ def find_max_length(arr) :
     return max
         
 
-
-# INPUTS: Array of strings
-# OUTPUT: Array of lists of chars,
-# where each list represents the corrisponding string in reverse
+# INPUT: Array of strings, start index
+# OUTPUT: Copy of input array but with all the string reversed,
 def reverse_args(arr, start=0) :
     result = []  
     for i in range(start,len(arr)) :
         result.append(arr[i][::-1])
     return result
 
-# INPUT : array of strings
-# OUTPUT : array of lists-of-chars
+# INPUT : Array of strings
+# OUTPUT : Mutate array so its lists of chars instead of strings
 def convert_to_list(arr) :
     for i in range(len(arr)) :
         arr[i] = list(arr[i])
@@ -41,7 +37,6 @@ def sum_elem(arg_arr, start=0) :
         sum += int(arg_arr[i])
     return sum
 
-
 # INPUT: array of lists-of-chars
 # OUTPUT: array elements so that they are all the same length
 # by padding the ends of the shorter ones with '0's.
@@ -51,7 +46,6 @@ def pad_smallest_general(arr) :
         while len(arr[i]) < max :
             arr[i].append('0')
 
-   
 # Add two numbers grade school style.
 # assuming the 'numbers' are given as lists of chars where
 # the digits have been reversed and the smaller one has been 
@@ -72,15 +66,10 @@ def add_big_numbers(list1, list2) :
 # main
 def main() :
     argv_reversed = reverse_args(sys.argv, 1)
-    print(argv_reversed)
     convert_to_list(argv_reversed)
-    print(argv_reversed)
-    print(find_max_length(argv_reversed))
     pad_smallest_general(argv_reversed)
     print(argv_reversed)
 
-    # padded_char_lists = pad_smallgest(reverse_args[0], reverse_args[1])
-    # print_array(padded_char_lists)
     return
 
 if __name__ == '__main__' :
