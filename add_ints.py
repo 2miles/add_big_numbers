@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import sys
 
-# TODO output result as a stirng of digits 
 # TODO Generalize add_big_numbers 
 #       - take an array of inputs to add instead of just 2
 # TODO Write a README.md explaining the program
@@ -25,6 +24,10 @@ def reverse_args(arr, start=0) :
     for i in range(start,len(arr)) :
         result.append(arr[i][::-1])
     return result
+
+def reverse_string(str) :
+    new_str = str[::-1]
+    return new_str
 
 # INPUT : Array of strings
 # OUTPUT : Mutate array so its lists of chars instead of strings
@@ -79,6 +82,7 @@ def main() :
     pad_smallest_general(argv_reversed)
     result = add_big_numbers(argv_reversed[0], argv_reversed[1])
     result = convert_to_string(result)
+    result = reverse_string(result)
     print(result)
     return
 
