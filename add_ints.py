@@ -32,6 +32,13 @@ def convert_to_list(arr) :
     for i in range(len(arr)) :
         arr[i] = list(arr[i])
 
+# INPUT: list of ints
+# RETURNS string of digits
+def convert_to_string(list) :
+    result = [str(ch) for ch in list]
+    result = ''.join(result)
+    return result
+
 # RETURNS integer sum of all command line arguments 
 def sum_elem(arg_arr, start=0) :
     sum = 0
@@ -70,11 +77,9 @@ def main() :
     argv_reversed = reverse_args(sys.argv, 1)
     convert_to_list(argv_reversed)
     pad_smallest_general(argv_reversed)
-    print(argv_reversed)
-
     result = add_big_numbers(argv_reversed[0], argv_reversed[1])
+    result = convert_to_string(result)
     print(result)
-
     return
 
 if __name__ == '__main__' :
