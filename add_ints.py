@@ -2,30 +2,57 @@
 
 import sys
 
-# print arr from start
-def print_array(arr, start) :
+
+# INPUTS: Array, Start index
+def print_array(arr, start=0) :
     for i in range(start, len(arr)):
         print(arr[i], end = ' ')
 
-# INPUT: String array, starting point
-# OUTPUT: String array with each element reversed 
-def reverse_each_arg(arr, start) :
+# INPUT: array of lists
+# RETURNS: number of elemtents of the largest list in the array
+def find_max_length(arr) :
+    max = 0
+    for i in range(len(arr)) :
+        if(len(arr[i]) >= max) :
+            max = len(arr[i])
+    return max
+        
+
+
+# INPUTS: Array of strings
+# OUTPUT: Array of lists of chars,
+# where each list represents the corrisponding string in reverse
+def reverse_args(arr, start=0) :
     result = []  
     for i in range(start,len(arr)) :
         result.append(arr[i][::-1])
     return result
 
-# sum the elements(as ints) of string array starting from start
-# RETURNS sum as integer
-def sum_elem(arr, start) :
+# INPUT : array of strings
+# OUTPUT : array of lists-of-chars
+def convert_to_list(arr) :
+    for i in range(len(arr)) :
+        arr[i] = list(arr[i])
+
+# RETURNS integer sum of all command line arguments 
+def sum_elem(arg_arr, start=0) :
     sum = 0
-    for i in range(start,len(arr)):
-        sum += int(arr[i])
+    for i in range(start,len(arg_arr)):
+        sum += int(arg_arr[i])
     return sum
 
 
-# takes two lists and if one is shorter it pads it with zeros.
-# So that both lists are the same size, and one has trailing zeros
+# INPUT: array of lists-of-chars
+# OUTPUT: array elements so that they are all the same length
+# by padding the ends of the shorter ones with '0's.
+def pad_smallest_general(arr) :
+    max = find_max_length(arr)
+    for i in range(len(arr)) :
+        while len(arr[i]) < max :
+            arr[i].append('0')
+
+# takes two lists of chars and if one is shorter it pads it with '0's.
+# So that both lists are the same size
 def pad_smallest(list1, list2) :
     len1 = len(list1)
     len2 = len(list2)
@@ -59,21 +86,16 @@ def add_big_numbers(list1, list2) :
 
 # main
 def main() :
-    print ('Sum of the arguments: ', sum_elem(sys.argv, 1))
-    new_array = reverse_each_arg(sys.argv, 1)
-    print ('All the arguments reversed: ')
-    print_array(new_array, 0)
+    argv_reversed = reverse_args(sys.argv, 1)
+    print(argv_reversed)
+    convert_to_list(argv_reversed)
+    print(argv_reversed)
+    print(find_max_length(argv_reversed))
+    pad_smallest_general(argv_reversed)
+    print(argv_reversed)
 
-    list2 = ['9', '2']
-    list1 = ['1', '2', '3', '4', '5', '5', '3']
-    print('list1', list1)
-    print('list2', list2)
-    pad_smallest(list1,list2)
-    print('list1 after', list1)
-    print('list2 after', list2)
-    final_result = add_big_numbers(list1, list2)
-    print('after addition', final_result)
-
+    # padded_char_lists = pad_smallest(reverse_args[0], reverse_args[1])
+    # print_array(padded_char_lists)
     return
 
 if __name__ == '__main__' :
