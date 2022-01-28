@@ -69,6 +69,8 @@ def main() :
     convert_to_list(argv_reversed)
     pad_smallest_general(argv_reversed)
     print(argv_reversed)
+    result = add_big_numbers(argv_reversed[0], argv_reversed[1])
+    print(result)
 
     return
 
