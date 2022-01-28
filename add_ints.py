@@ -51,21 +51,6 @@ def pad_smallest_general(arr) :
         while len(arr[i]) < max :
             arr[i].append('0')
 
-# takes two lists of chars and if one is shorter it pads it with '0's.
-# So that both lists are the same size
-def pad_smallest(list1, list2) :
-    len1 = len(list1)
-    len2 = len(list2)
-    if len1 != len2 :
-        if len1 < len2 :
-            diff = len2 - len1
-            for i in range(diff) :
-                list1.append('0')
-        else :
-            diff = len1 - len2
-            for i in range(diff) :
-                list2.append('0')
-
    
 # Add two numbers grade school style.
 # assuming the 'numbers' are given as lists of chars where
@@ -94,7 +79,7 @@ def main() :
     pad_smallest_general(argv_reversed)
     print(argv_reversed)
 
-    # padded_char_lists = pad_smallest(reverse_args[0], reverse_args[1])
+    # padded_char_lists = pad_smallgest(reverse_args[0], reverse_args[1])
     # print_array(padded_char_lists)
     return
 
